@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TeamManager.Core.Models;
+using TeamManager.Logic.Abstraction;
 
 namespace TeamManager.API.Controllers
 {
@@ -7,9 +8,11 @@ namespace TeamManager.API.Controllers
     [Route("api/[controller]")]
     public class TeamController : Controller
     {
-        public TeamController()
-        {
+        private readonly ITeamService _teamService;
 
+        public TeamController(ITeamService teamService)
+        {
+            _teamService = teamService;
         }
 
         [HttpGet("GetTeamNames")]

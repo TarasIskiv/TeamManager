@@ -12,9 +12,11 @@ builder.Services.AddSingleton<MongoContext>();
 
 //Services
 builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 //Repositories
 builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

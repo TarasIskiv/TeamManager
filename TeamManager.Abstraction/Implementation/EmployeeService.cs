@@ -9,35 +9,35 @@ using TeamManager.Repository.Abstraction;
 
 namespace TeamManager.Logic.Implementation
 {
-    public class TeamService : ITeamService
+    public class EmployeeService : IEmployeeService
     {
-        private readonly ITeamRepository _teamRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public TeamService(ITeamRepository teamRepository)
+        public EmployeeService(IEmployeeRepository employeeRepository)
         {
-            _teamRepository = teamRepository;
+            _employeeRepository = employeeRepository;
         }
-        public Task AddTeam(TeamModel team)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TeamModel> GetTeam(Guid id)
+        public Task AddEmployee(EmployeeModel employee)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TeamNameModel>> GetTeamNames()
+        public Task<EmployeeModel> GetEmployee(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoveTeam(Guid id)
+        public Task<List<EmployeeModel>> GetEmployees(Guid temaId)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateTeam(TeamModel team)
+        public Task RemoveEmployee(Guid id, bool keepInHistory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateEmployee(EmployeeModel employee)
         {
             throw new NotImplementedException();
         }

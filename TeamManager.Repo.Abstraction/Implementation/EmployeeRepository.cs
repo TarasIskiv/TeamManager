@@ -4,40 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamManager.Core.Models;
-using TeamManager.Logic.Abstraction;
 using TeamManager.Repository.Abstraction;
 
-namespace TeamManager.Logic.Implementation
+namespace TeamManager.Repository.Implementation
 {
-    public class TeamService : ITeamService
+    public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly ITeamRepository _teamRepository;
-
-        public TeamService(ITeamRepository teamRepository)
+        public EmployeeRepository()
         {
-            _teamRepository = teamRepository;
+
         }
-        public Task AddTeam(TeamModel team)
+        public Task AddEmployee(EmployeeModel employee)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TeamModel> GetTeam(Guid id)
+        public Task DeactivateEmployee(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TeamNameModel>> GetTeamNames()
+        public Task<EmployeeModel> GetEmployee(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoveTeam(Guid id)
+        public Task<List<EmployeeModel>> GetEmployees(Guid temaId)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateTeam(TeamModel team)
+        public Task RemoveEmployee(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateEmployee(EmployeeModel employee)
         {
             throw new NotImplementedException();
         }
