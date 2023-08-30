@@ -26,5 +26,9 @@ namespace TeamManager.Core.Models
         public DateTime? ActiveTo { get; set; } = null;
         [BsonElement("kh")]
         public bool KeepHistory { get; set; } = true;
+        [BsonElement("r")]
+        public string Role { get; set; } = default!;
+        [BsonElement("res")]
+        public List<string> Responsibilities { get; set; } = new();
     }
 }

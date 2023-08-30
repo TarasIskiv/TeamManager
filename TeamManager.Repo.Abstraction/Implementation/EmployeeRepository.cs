@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamManager.Core.Models;
+using TeamManager.Database;
 using TeamManager.Repository.Abstraction;
 
 namespace TeamManager.Repository.Implementation
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        public EmployeeRepository()
+        private readonly MongoContext _context;
+        public EmployeeRepository(MongoContext context)
         {
-
+            _context = context;
         }
         public Task AddEmployee(EmployeeModel employee)
         {
