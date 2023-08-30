@@ -6,16 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeamManager.Database.Models
+namespace TeamManager.Core.Models
 {
-    public class TeamModel
+    public class TeamNameModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public Guid Id { get; set; }
         [BsonElement("n")]
         public string Name { get; set; }
-        [BsonElement("d")]
-        public string Description { get; set; }
     }
 }

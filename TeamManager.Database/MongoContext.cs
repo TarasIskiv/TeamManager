@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeamManager.Database.Models;
+using TeamManager.Core.Models;
 
 namespace TeamManager.Database
 {

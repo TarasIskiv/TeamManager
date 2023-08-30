@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Core\TeamManager.Core.csproj" />
+    <ProjectReference Include="..\TeamManager.Repo.Abstraction\TeamManager.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

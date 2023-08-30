@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeamManager.Database.Models
+namespace TeamManager.Core.Models
 {
     public class EmployeeModel
     {

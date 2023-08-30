@@ -11,11 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TeamManager.Abstraction\TeamManager.Logic.Abstraction.csproj" />
+    <ProjectReference Include="..\TeamManager.Abstraction\TeamManager.Logic.csproj" />
+    <ProjectReference Include="..\TeamManager.Core\TeamManager.Core.csproj" />
     <ProjectReference Include="..\TeamManager.Database\TeamManager.Database.csproj" />
-    <ProjectReference Include="..\TeamManager.Implementation\TeamManager.Logic.Implementation.csproj" />
-    <ProjectReference Include="..\TeamManager.Repo.Abstraction\TeamManager.Repo.Abstraction.csproj" />
-    <ProjectReference Include="..\TeamManager.Repo.Implementation\TeamManager.Repo.Implementation.csproj" />
+    <ProjectReference Include="..\TeamManager.Repo.Abstraction\TeamManager.Repository.csproj" />
   </ItemGroup>
 
 </Project>

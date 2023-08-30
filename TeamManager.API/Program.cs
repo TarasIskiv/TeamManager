@@ -1,10 +1,20 @@
 using TeamManager.Database;
+using TeamManager.Logic.Abstraction;
+using TeamManager.Logic.Implementation;
+using TeamManager.Repository.Abstraction;
+using TeamManager.Repository.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoContext>();
+
+//Services
+builder.Services.AddScoped<ITeamService, TeamService>();
+
+//Repositories
+builder.Services.AddScoped<ITeamRepository, TeamRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
