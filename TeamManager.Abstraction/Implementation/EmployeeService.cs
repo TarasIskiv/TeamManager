@@ -17,29 +17,36 @@ namespace TeamManager.Logic.Implementation
         {
             _employeeRepository = employeeRepository;
         }
-        public Task AddEmployee(EmployeeModel employee)
+        public async Task AddEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            await _employeeRepository.AddEmployee(employee);
         }
 
-        public Task<EmployeeModel> GetEmployee(Guid id)
+        public async Task<EmployeeModel> GetEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.GetEmployee(id);
         }
 
-        public Task<List<EmployeeModel>> GetEmployees(Guid temaId)
+        public async Task<List<EmployeeModel>> GetEmployees(Guid temaId)
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.GetEmployees(temaId);
         }
 
-        public Task RemoveEmployee(Guid id, bool keepInHistory)
+        public async Task RemoveEmployee(Guid id, bool keepInHistory)
         {
-            throw new NotImplementedException();
+            if(keepInHistory)
+            {
+                await _employeeRepository.DeactivateEmployee(id);
+            }
+            else
+            {
+                await _employeeRepository.RemoveEmployee(id);
+            }
         }
 
-        public Task UpdateEmployee(EmployeeModel employee)
+        public async Task UpdateEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            await _employeeRepository.UpdateEmployee(employee);
         }
     }
 }

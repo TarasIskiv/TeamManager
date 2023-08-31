@@ -20,7 +20,8 @@ namespace TeamManager.API.Controllers
         { 
             try
             {
-                return Ok();
+                var teamNames = await _teamService.GetTeamNames();
+                return Ok(teamNames);
             }
             catch (Exception)
             {
@@ -33,6 +34,7 @@ namespace TeamManager.API.Controllers
         {
             try
             {
+                await _teamService.AddTeam(team);
                 return Ok();
             }
             catch (Exception)
@@ -46,7 +48,8 @@ namespace TeamManager.API.Controllers
         {
             try
             {
-                return Ok();
+                var team = await _teamService.GetTeam(id);
+                return Ok(team);
             }
             catch (Exception)
             {
@@ -59,6 +62,7 @@ namespace TeamManager.API.Controllers
         {
             try
             {
+                await _teamService.RemoveTeam(id);
                 return Ok();
             }
             catch (Exception)
@@ -72,6 +76,7 @@ namespace TeamManager.API.Controllers
         {
             try
             {
+                await _teamService.UpdateTeam(team);
                 return Ok();
             }
             catch (Exception)

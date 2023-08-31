@@ -17,29 +17,29 @@ namespace TeamManager.Logic.Implementation
         {
             _teamRepository = teamRepository;
         }
-        public Task AddTeam(TeamModel team)
+        public async Task AddTeam(TeamModel team)
         {
-            throw new NotImplementedException();
+            await _teamRepository.AddTeam(team);
         }
 
-        public Task<TeamModel> GetTeam(Guid id)
+        public async Task<TeamModel> GetTeam(Guid id)
         {
-            throw new NotImplementedException();
+            return await _teamRepository.GetTeam(id);
         }
 
-        public Task<List<TeamNameModel>> GetTeamNames()
+        public async Task<List<TeamNameModel>> GetTeamNames()
         {
-            throw new NotImplementedException();
+            return await _teamRepository.GetTeamNames();
         }
 
-        public Task RemoveTeam(Guid id)
+        public async Task RemoveTeam(Guid id)
         {
-            throw new NotImplementedException();
+            await _teamRepository.RemoveTeam(id);
         }
 
-        public Task UpdateTeam(TeamModel team)
+        public async Task UpdateTeam(TeamModel team)
         {
-            throw new NotImplementedException();
+            await _teamRepository.UpdateTeam(team);
         }
     }
 }
