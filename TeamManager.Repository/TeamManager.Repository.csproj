@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Core\TeamManager.Core.csproj" />
+    <ProjectReference Include="..\TeamManager.Database\TeamManager.Database.csproj" />
+  </ItemGroup>
+
 </Project>
