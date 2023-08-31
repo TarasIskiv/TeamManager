@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,34 +18,45 @@ namespace TeamManager.Repository.Implementation
         {
             _context = context;
         }
-        public Task AddEmployee(EmployeeModel employee)
+        public async Task AddEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            await _context.Employees.InsertOneAsync(employee);
         }
 
-        public Task DeactivateEmployee(Guid id)
+        public async Task DeactivateEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id == id);
+            var update = Builders<EmployeeModel>.Update.Set(emp => emp.KeepHistory, true)
+                .Set(emp => emp.ActiveTo, DateTime.UtcNow);
+            await _context.Employees.UpdateOneAsync(filter, update);
         }
 
-        public Task<EmployeeModel> GetEmployee(Guid id)
+        public async Task<EmployeeModel> GetEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id == id);
+            return await _context.Employees.Find(filter).SingleOrDefaultAsync();
         }
 
-        public Task<List<EmployeeModel>> GetEmployees(Guid temaId)
+        public async Task<List<EmployeeModel>> GetEmployees(Guid temaId)
         {
-            throw new NotImplementedException();
+            return await _context.Employees.Find(new BsonDocument()).ToListAsync();
         }
 
-        public Task RemoveEmployee(Guid id)
+        public async Task RemoveEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id == id);
+            await _context.Employees.DeleteOneAsync(filter);
         }
 
-        public Task UpdateEmployee(EmployeeModel employee)
+        public async Task UpdateEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id == employee.Id);
+            var update = Builders<EmployeeModel>.Update.Set(emp => emp.Name , employee.Name)
+                .Set(emp => emp.Surname, employee.Surname)
+                .Set(emp => emp.Teamid, employee.Teamid)
+                .Set(emp => emp.Role, employee.Role)
+                .Set(emp => emp.Responsibilities, employee.Responsibilities);
+            await _context.Employees.UpdateOneAsync(filter, update);
         }
     }
 }
