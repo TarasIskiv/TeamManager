@@ -9,11 +9,11 @@ namespace TeamManager.Repository.Abstraction
 {
     public interface IEmployeeRepository
     {
-        Task<EmployeeModel> GetEmployee(Guid id);
-        Task<List<EmployeeModel>> GetEmployees(Guid temaId);
+        Task<EmployeeModel> GetEmployee(string id);
+        Task<List<EmployeeModel>> GetEmployees(string temaId);
         Task AddEmployee(EmployeeModel employee);
         Task UpdateEmployee(EmployeeModel employee);
-        Task RemoveEmployee(Guid id);
-        Task DeactivateEmployee(Guid id);
+        Task RemoveEmployee(string id);
+        Task DeactivateEmployee(string id);
     }
 }

@@ -9,10 +9,10 @@ namespace TeamManager.Logic.Abstraction
 {
     public interface IEmployeeService
     {
-        Task<EmployeeModel> GetEmployee(Guid id);
-        Task<List<EmployeeModel>> GetEmployees(Guid temaId);
+        Task<EmployeeModel> GetEmployee(string id);
+        Task<List<EmployeeModel>> GetEmployees(string temaId);
         Task AddEmployee(EmployeeModel employee);
         Task UpdateEmployee(EmployeeModel employee);
-        Task RemoveEmployee(Guid id, bool keepInHistory);
+        Task RemoveEmployee(string id, bool keepInHistory);
     }
 }

@@ -44,7 +44,7 @@ namespace TeamManager.API.Controllers
         }
 
         [HttpGet("GetTeam")]
-        public async Task<IActionResult> GetTeam([FromQuery] Guid id)
+        public async Task<IActionResult> GetTeam([FromQuery] string id)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace TeamManager.API.Controllers
         }
 
         [HttpDelete("RemoveTeam")]
-        public async Task<IActionResult> RemoveTeam([FromQuery] Guid id)
+        public async Task<IActionResult> RemoveTeam([FromQuery] string id)
         {
             try
             {

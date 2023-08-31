@@ -22,7 +22,7 @@ namespace TeamManager.Logic.Implementation
             await _teamRepository.AddTeam(team);
         }
 
-        public async Task<TeamModel> GetTeam(Guid id)
+        public async Task<TeamModel> GetTeam(string id)
         {
             return await _teamRepository.GetTeam(id);
         }
@@ -32,7 +32,7 @@ namespace TeamManager.Logic.Implementation
             return await _teamRepository.GetTeamNames();
         }
 
-        public async Task RemoveTeam(Guid id)
+        public async Task RemoveTeam(string id)
         {
             await _teamRepository.RemoveTeam(id);
         }

@@ -10,8 +10,8 @@ namespace TeamManager.Logic.Abstraction
     public interface ITeamService
     {
         Task<List<TeamNameModel>> GetTeamNames();
-        Task<TeamModel> GetTeam(Guid id);
-        Task RemoveTeam(Guid id);
+        Task<TeamModel> GetTeam(string id);
+        Task RemoveTeam(string id);
         Task UpdateTeam(TeamModel team);
         Task AddTeam(TeamModel team);
     }

@@ -12,7 +12,7 @@ namespace TeamManager.Core.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public Guid Id { get; set; }
+        public string Id { get; set; } = default!;
         [BsonElement("n")]
         public string Name { get; set; }
     }

@@ -12,14 +12,14 @@ namespace TeamManager.Core.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public Guid Id { get; set; }
+        public string Id { get; set; } = default!;
         [BsonElement("n")]
         public string Name { get; set; }
         [BsonElement("s")]
         public string Surname { get; set; }
         [BsonElement("tid")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public Guid Teamid { get; set; }
+        public string Teamid { get; set; } = default!;
         [BsonElement("af")]
         public DateTime ActiveFrom { get; set; }
         [BsonElement("at")]

@@ -16,7 +16,7 @@ namespace TeamManager.API.Controllers
         }
 
         [HttpGet("GetEmployee")]
-        public async Task<IActionResult> GetEmployee([FromQuery] Guid id)
+        public async Task<IActionResult> GetEmployee([FromQuery] string id)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace TeamManager.API.Controllers
         }
 
         [HttpGet("GetEmployees")]
-        public async Task<IActionResult> GetEmployees([FromQuery] Guid teamId)
+        public async Task<IActionResult> GetEmployees([FromQuery] string teamId)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace TeamManager.API.Controllers
         }
 
         [HttpDelete("RemoveEmployee")]
-        public async Task<IActionResult> UpdateEmployee([FromQuery] Guid id, [FromQuery] bool keepInHistory)
+        public async Task<IActionResult> UpdateEmployee([FromQuery] string id, [FromQuery] bool keepInHistory)
         {
             try
             {

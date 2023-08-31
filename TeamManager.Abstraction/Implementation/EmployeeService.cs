@@ -22,17 +22,17 @@ namespace TeamManager.Logic.Implementation
             await _employeeRepository.AddEmployee(employee);
         }
 
-        public async Task<EmployeeModel> GetEmployee(Guid id)
+        public async Task<EmployeeModel> GetEmployee(string id)
         {
             return await _employeeRepository.GetEmployee(id);
         }
 
-        public async Task<List<EmployeeModel>> GetEmployees(Guid temaId)
+        public async Task<List<EmployeeModel>> GetEmployees(string temaId)
         {
             return await _employeeRepository.GetEmployees(temaId);
         }
 
-        public async Task RemoveEmployee(Guid id, bool keepInHistory)
+        public async Task RemoveEmployee(string id, bool keepInHistory)
         {
             if(keepInHistory)
             {

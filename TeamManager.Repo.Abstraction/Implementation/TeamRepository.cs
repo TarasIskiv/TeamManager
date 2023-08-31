@@ -24,9 +24,9 @@ namespace TeamManager.Repository.Implementation
             await _context.Teams.InsertOneAsync(team);
         }
 
-        public async Task<TeamModel> GetTeam(Guid id)
+        public async Task<TeamModel> GetTeam(string id)
         {
-            return await _context.Teams.Find(team => team.Id == id).SingleOrDefaultAsync();
+            return await _context.Teams.Find(team => team.Id.Equals(id)).SingleOrDefaultAsync();
         }
 
         public async Task<List<TeamNameModel>> GetTeamNames()
@@ -34,14 +34,14 @@ namespace TeamManager.Repository.Implementation
             return await _context.Teams.Find(new BsonDocument()).Project(team => new TeamNameModel() { Id = team.Id, Name = team.Name}).ToListAsync();
         }
 
-        public async Task RemoveTeam(Guid id)
+        public async Task RemoveTeam(string id)
         {
-            await _context.Teams.DeleteOneAsync(team => team.Id == id);
+            await _context.Teams.DeleteOneAsync(team => team.Id.Equals(id));
         }
 
         public async Task UpdateTeam(TeamModel team)
         {
-            var filter = Builders<TeamModel>.Filter.Where(mongoTeam => mongoTeam.Id == team.Id);
+            var filter = Builders<TeamModel>.Filter.Where(mongoTeam => mongoTeam.Id.Equals(team.Id));
             var update = Builders<TeamModel>.Update.Set(mongoTeam => mongoTeam.Name, team.Name).Set(mongoTeam => mongoTeam.Description, team.Description);
             var record = await _context.Teams.FindOneAndUpdateAsync(filter, update);
         }

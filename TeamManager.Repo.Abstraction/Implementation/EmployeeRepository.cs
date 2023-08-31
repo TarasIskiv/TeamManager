@@ -23,34 +23,34 @@ namespace TeamManager.Repository.Implementation
             await _context.Employees.InsertOneAsync(employee);
         }
 
-        public async Task DeactivateEmployee(Guid id)
+        public async Task DeactivateEmployee(string id)
         {
-            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id == id);
+            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id.Equals(id));
             var update = Builders<EmployeeModel>.Update.Set(emp => emp.KeepHistory, true)
                 .Set(emp => emp.ActiveTo, DateTime.UtcNow);
             await _context.Employees.UpdateOneAsync(filter, update);
         }
 
-        public async Task<EmployeeModel> GetEmployee(Guid id)
+        public async Task<EmployeeModel> GetEmployee(string id)
         {
-            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id == id);
+            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id.Equals(id));
             return await _context.Employees.Find(filter).SingleOrDefaultAsync();
         }
 
-        public async Task<List<EmployeeModel>> GetEmployees(Guid temaId)
+        public async Task<List<EmployeeModel>> GetEmployees(string temaId)
         {
             return await _context.Employees.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task RemoveEmployee(Guid id)
+        public async Task RemoveEmployee(string id)
         {
-            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id == id);
+            var filter = Builders<EmployeeModel>.Filter.Where(employer => employer.Id.Equals(id));
             await _context.Employees.DeleteOneAsync(filter);
         }
 
         public async Task UpdateEmployee(EmployeeModel employee)
         {
-            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id == employee.Id);
+            var filter = Builders<EmployeeModel>.Filter.Where(emp => emp.Id.Equals(employee.Id));
             var update = Builders<EmployeeModel>.Update.Set(emp => emp.Name , employee.Name)
                 .Set(emp => emp.Surname, employee.Surname)
                 .Set(emp => emp.Teamid, employee.Teamid)
