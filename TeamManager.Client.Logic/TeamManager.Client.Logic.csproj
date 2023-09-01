@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstraction\" />
-    <Folder Include="Implementation\" />
+    <ProjectReference Include="..\TeamManager.Core\TeamManager.Core.csproj" />
   </ItemGroup>
 
 </Project>
