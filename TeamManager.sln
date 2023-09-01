@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.API", "TeamManager.API\TeamManager.API.csproj", "{81A1E9A7-0996-4571-90DF-8997720DACC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.API", "TeamManager.API\TeamManager.API.csproj", "{81A1E9A7-0996-4571-90DF-8997720DACC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Logic", "TeamManager.Abstraction\TeamManager.Logic.csproj", "{D28426F0-6B30-4EEB-9459-88AE4ECE0699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Logic", "TeamManager.Abstraction\TeamManager.Logic.csproj", "{D28426F0-6B30-4EEB-9459-88AE4ECE0699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Repository", "TeamManager.Repo.Abstraction\TeamManager.Repository.csproj", "{7F9FEC3A-1DE4-4ECA-A2D9-FFED51B2DCBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Repository", "TeamManager.Repo.Abstraction\TeamManager.Repository.csproj", "{7F9FEC3A-1DE4-4ECA-A2D9-FFED51B2DCBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Database", "TeamManager.Database\TeamManager.Database.csproj", "{05785E08-2F07-4E1E-8056-0994AE565C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Database", "TeamManager.Database\TeamManager.Database.csproj", "{05785E08-2F07-4E1E-8056-0994AE565C65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Core", "TeamManager.Core\TeamManager.Core.csproj", "{9E8E034E-13F6-4B9B-A552-2187942E358B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Core", "TeamManager.Core\TeamManager.Core.csproj", "{9E8E034E-13F6-4B9B-A552-2187942E358B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Client", "TeamManager.Client\TeamManager.Client.csproj", "{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Client.Logic", "TeamManager.Client.Logic\TeamManager.Client.Logic.csproj", "{0D78FF30-4132-4052-9B8E-B389983CDC11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{9E8E034E-13F6-4B9B-A552-2187942E358B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E8E034E-13F6-4B9B-A552-2187942E358B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E8E034E-13F6-4B9B-A552-2187942E358B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D78FF30-4132-4052-9B8E-B389983CDC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D78FF30-4132-4052-9B8E-B389983CDC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D78FF30-4132-4052-9B8E-B389983CDC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D78FF30-4132-4052-9B8E-B389983CDC11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

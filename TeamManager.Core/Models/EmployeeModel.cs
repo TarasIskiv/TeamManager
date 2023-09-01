@@ -15,6 +15,10 @@ namespace TeamManager.Core.Models
         public string Id { get; set; } = default!;
         [BsonElement("n")]
         public string Name { get; set; }
+        [BsonElement("a")]
+        public int Age { get; set; }
+        [BsonElement("p")]
+        public string Photo { get; set; }
         [BsonElement("s")]
         public string Surname { get; set; }
         [BsonElement("tid")]
