@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using TeamManager.Client.Logic.Abstraction;
@@ -10,34 +11,39 @@ namespace TeamManager.Client.Logic.Implementation
 {
     public class EmployeeService : IEmployeeService
     {
-        public EmployeeService()
+        private readonly HttpClient _client;
+        public EmployeeService(HttpClient client)
         {
-
+            _client = client;
         }
 
-        public Task AddEmployee(EmployeeModel employee)
+        public async Task AddEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/Employee/AddEmployee");
+            request.Content = JsonContent.Create(employee);
+            await _client.SendAsync(request);
         }
 
-        public Task<EmployeeModel> GetEmployee(string id)
+        public async Task<EmployeeModel> GetEmployee(string id)
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<EmployeeModel>($"api/Employee/GetEmployee?id={id}") ?? new EmployeeModel();
         }
 
-        public Task<List<EmployeeModel>> GetEmployees(string temaId)
+        public async Task<List<EmployeeModel>> GetEmployees(string temaId)
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<List<EmployeeModel>>("api/Employee/GetEmployees") ?? new List<EmployeeModel>();
         }
 
-        public Task RemoveEmployee(string id, bool keepInHistory)
+        public async Task RemoveEmployee(string id, bool keepInHistory)
         {
-            throw new NotImplementedException();
+            await _client.DeleteAsync($"api/Employee/RemoveEmployee?id={id}&keepInHistory={keepInHistory}");
         }
 
-        public Task UpdateEmployee(EmployeeModel employee)
+        public async Task UpdateEmployee(EmployeeModel employee)
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Put, "api/Employee/UpdateEmployee");
+            request.Content = JsonContent.Create(employee);
+            await _client.SendAsync(request);
         }
     }
 }

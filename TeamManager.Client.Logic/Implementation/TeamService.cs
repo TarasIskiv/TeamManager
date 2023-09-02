@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using TeamManager.Client.Logic.Abstraction;
@@ -10,34 +11,39 @@ namespace TeamManager.Client.Logic.Implementation
 {
     public class TeamService : ITeamService
     {
-        public TeamService()
+        private readonly HttpClient _client;
+        public TeamService(HttpClient client)
         {
-
+            _client = client;
         }
 
-        public Task AddTeam(TeamModel team)
+        public async Task AddTeam(TeamModel team)
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/Team/AddTeam");
+            request.Content = JsonContent.Create(team);
+            await _client.SendAsync(request);
         }
 
-        public Task<TeamModel> GetTeam(string id)
+        public async Task<TeamModel> GetTeam(string id)
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<TeamModel>($"api/Team/GetTeam?Id={id}") ?? new TeamModel();
         }
 
-        public Task<List<TeamNameModel>> GetTeamNames()
+        public async Task<List<TeamNameModel>> GetTeamNames()
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<List<TeamNameModel>>("api/Team/GetTeamNames") ?? new List<TeamNameModel>();
         }
 
-        public Task RemoveTeam(string id)
+        public async Task RemoveTeam(string id)
         {
-            throw new NotImplementedException();
+            await _client.DeleteAsync($"api/Team/RemoveTeam?id={id}");
         }
 
-        public Task UpdateTeam(TeamModel team)
+        public async Task UpdateTeam(TeamModel team)
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Put, "api/Team/UpdateTeam");
+            request.Content = JsonContent.Create(team);
+            await _client.SendAsync(request);
         }
     }
 }
