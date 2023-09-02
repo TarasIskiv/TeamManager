@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Database", "Tea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Core", "TeamManager.Core\TeamManager.Core.csproj", "{9E8E034E-13F6-4B9B-A552-2187942E358B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Client", "TeamManager.Client\TeamManager.Client.csproj", "{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Client", "TeamManager.Client\TeamManager.Client.csproj", "{08DD1C00-B54B-4BF3-A9CC-D018A55E4765}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Client.Logic", "TeamManager.Client.Logic\TeamManager.Client.Logic.csproj", "{0D78FF30-4132-4052-9B8E-B389983CDC11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Client.Logic", "TeamManager.Client.Logic\TeamManager.Client.Logic.csproj", "{0D78FF30-4132-4052-9B8E-B389983CDC11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
