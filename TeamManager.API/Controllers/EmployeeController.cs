@@ -35,7 +35,7 @@ namespace TeamManager.API.Controllers
             try
             {
                 var employees = await _employeeService.GetEmployees(teamId);
-                return Ok();
+                return Ok(employees);
             }
             catch (Exception)
             {

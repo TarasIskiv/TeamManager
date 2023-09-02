@@ -31,7 +31,7 @@ namespace TeamManager.Client.Logic.Implementation
 
         public async Task<List<EmployeeModel>> GetEmployees(string temaId)
         {
-            return await _client.GetFromJsonAsync<List<EmployeeModel>>("api/Employee/GetEmployees") ?? new List<EmployeeModel>();
+            return await _client.GetFromJsonAsync<List<EmployeeModel>>($"api/Employee/GetEmployees?teamId={temaId}") ?? new List<EmployeeModel>();
         }
 
         public async Task RemoveEmployee(string id, bool keepInHistory)

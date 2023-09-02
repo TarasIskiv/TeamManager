@@ -1,4 +1,35 @@
 ﻿@page "/team/{Id}"
 
-<h3>TeamPage</h3>
-
+<TeamDetailsComponent Team="@Team" TeamMembers="@TeamMembersCount"></TeamDetailsComponent>
+<br/>
+<div style="width:30%">
+    <MudStack Row="true">
+        <MudButton
+                OnClick="@UpdateTeam" 
+                Color="Color.Warning" 
+                Variant="Variant.Outlined">Edit Team</MudButton>
+            <MudButton 
+                OnClick="@DeleteTeam" 
+                Color="Color.Error" 
+                Variant="Variant.Outlined"
+                Disabled="@(TeamMembersCount != 0)">Delete Team</MudButton>
+    </MudStack>
+</div>
+<br/>
+<MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+    <MudText>Members</MudText>
+    <div style="width:25%">
+        <MudStack Row="true" Justify="Justify.SpaceBetween">
+            <MudButton
+                OnClick="@AddNewEmployee" 
+                Color="Color.Secondary" 
+                Variant="Variant.Outlined">Add Employee</MudButton>
+            <MudButton 
+                OnClick="@ExpandCollapse" 
+                Color="Color.Secondary" 
+                Variant="Variant.Outlined">@(UsersExpanded ? "Collapse": "Expand")</MudButton>
+        </MudStack>
+    </div>
+</MudStack>
+<hr />
+<TeamMembersComponent></TeamMembersComponent>
