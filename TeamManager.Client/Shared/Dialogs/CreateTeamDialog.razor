@@ -1,0 +1,21 @@
+﻿@using MudBlazor
+<MudDialog Style="width:500px">
+    <TitleContent>
+        <MudText Typo=Typo.h4>Create Team</MudText>
+    </TitleContent>
+    <DialogContent>
+        <EditForm EditContext="_context">
+            <DataAnnotationsValidator/>
+            <MudTextField Label="Team name" HelperText="Min. 5 characters"
+                            @bind-Value="NewTeam.Name" For="@(() => NewTeam.Name)" Variant="Variant.Outlined"/>
+            <MudTextField Label="Team Description" HelperText="Add team's description. (Optional)" Class="mt-3"
+                            @bind-Value="NewTeam.Description" Required="false" Lines="3" Variant="Variant.Outlined"/>
+        </EditForm>
+    </DialogContent>
+    <DialogActions>
+        <MudStack Row="true" Justify="Justify.SpaceBetween" Style="width:100%;padding: 0em 1em;">
+            <MudButton OnClick="@Close" Color="Color.Error" Variant="Variant.Filled">Cancel</MudButton>
+            <MudButton Disabled="@(!_context.Validate())" Color="Color.Success" OnClick="Save" Variant="Variant.Filled">Create</MudButton>
+        </MudStack>
+    </DialogActions>
+</MudDialog>

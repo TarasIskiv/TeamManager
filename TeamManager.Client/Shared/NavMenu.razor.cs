@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using TeamManager.Client.Logic.Abstraction;
+using TeamManager.Client.Shared.Dialogs;
 using TeamManager.Core.Models;
 namespace TeamManager.Client.Shared
 {
@@ -8,6 +9,7 @@ namespace TeamManager.Client.Shared
     {
         [Inject] ITeamService TeamService { get; set; }
         [Inject] NavigationManager NavManager { get; set; } 
+        [Inject] IDialogService Dialog { get; set; }
         public List<TeamNameModel> TeamNames { get; set; } = new();
         private TeamNameModel SelectedTeam { get; set; }
         public NavMenu()
@@ -31,9 +33,22 @@ namespace TeamManager.Client.Shared
             NavManager.NavigateTo($"/team/{Id}");
         }
 
-        public void AddTeam()
+        public async Task AddTeam()
         {
+            var options = new DialogOptions 
+            { 
+                CloseOnEscapeKey = true, 
+                Position = DialogPosition.Center,
+                DisableBackdropClick=true
+            };
+            var dialog = Dialog.Show<CreateTeamDialog>("Create Team", options);
+            var result = await dialog.Result;
+            if (result.Canceled) return;
 
+            var newTeam = result.Data as TeamModel;
+            await TeamService.AddTeam(newTeam!);
+            await LoadTeamNames();
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

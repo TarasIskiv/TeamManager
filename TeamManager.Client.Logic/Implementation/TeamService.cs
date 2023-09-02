@@ -19,7 +19,7 @@ namespace TeamManager.Client.Logic.Implementation
 
         public async Task AddTeam(TeamModel team)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/Team/AddTeam");
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/Team/AddNewTeam");
             request.Content = JsonContent.Create(team);
             await _client.SendAsync(request);
         }

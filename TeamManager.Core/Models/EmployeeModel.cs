@@ -14,13 +14,13 @@ namespace TeamManager.Core.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = default!;
         [BsonElement("n")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         [BsonElement("a")]
         public int Age { get; set; }
         [BsonElement("p")]
-        public string Photo { get; set; }
+        public string Photo { get; set; } = string.Empty;
         [BsonElement("s")]
-        public string Surname { get; set; }
+        public string Surname { get; set; } = string.Empty;
         [BsonElement("tid")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Teamid { get; set; } = default!;
