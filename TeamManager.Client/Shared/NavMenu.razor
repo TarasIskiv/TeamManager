@@ -1,11 +1,22 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Teams</a>
-        <button title="Navigation menu" class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿@using MudBlazor
+<MudPaper Square="true" Width="100%" Height="100vh">
+    <MudPaper Square="true" Width="100%" Height="7vh" Outlined="true">
+        <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.Center" Style="height:100%; width:100%">
+            <MudText Typo="Typo.body1">Teams</MudText>
+        </MudStack>
+    </MudPaper>
+    <MudPaper Square="true" Width="100%" Height="85vh" Outlined="false" Elevation="0">
+        <MudNavMenu>
+        @foreach(var team in TeamNames)
+        {
+            <MudNavLink Style="height:6vh; font-size:14px" OnClick="@(() => NavigateToTeam(@team.Id))">@team.Name</MudNavLink>
+        }
+        </MudNavMenu>   
+    </MudPaper>
+    <MudStack Row="true" Justify="Justify.Center">
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@AddTeam">Add Team</MudButton>
+    </MudStack>
+</MudPaper>
 
 
 
