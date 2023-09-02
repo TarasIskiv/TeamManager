@@ -36,6 +36,8 @@ namespace TeamManager.Repository.Implementation
 
         public async Task RemoveTeam(string id)
         {
+            var employeesInTeam = await _context.Employees.Find(employee => employee.Teamid.Equals(id)).CountDocumentsAsync();
+            if (employeesInTeam != 0) return;
             await _context.Teams.DeleteOneAsync(team => team.Id.Equals(id));
         }
 
