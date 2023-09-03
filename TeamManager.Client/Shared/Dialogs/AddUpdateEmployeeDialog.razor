@@ -1,36 +1,53 @@
 ﻿@using MudBlazor
-<MudDialog Style="width:550px; height: 750px">
+<MudDialog Style="min-width:900px; height: 625px">
     <TitleContent>
         <MudText Typo=Typo.h4>@(IsNew ? "Add Employee" : "Update Employee")</MudText>
     </TitleContent>
     <DialogContent>
             <MudStack Row="true" Style="width:100%; height: 60%">
-                <div style="width:50%">
-                   <MudFileUpload T="IBrowserFile" Style="height: 80%; width:100%" OnFilesChanged="OnInputFileChanged" Hidden="false"InputStyle="opacity:0"
-                        @ondragleave="@ClearDragClass" @ondragend="@ClearDragClass">
+                <div style="width:35%">
+                   <MudFileUpload T="IBrowserFile" InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20" Style="height: 65%; width:100%" Accept=".jpg" OnFilesChanged="OnInputFileChanged" Hidden="false"InputStyle="opacity:0"
+                        @ondragenter="@SetDragClass" @ondragleave="@ClearDragClass" @ondragend="@ClearDragClass">
                        <ButtonTemplate>
-                           <MudPaper Style="height: 270%;width: 100%;margin-top: -25px !important;" Outlined="true" Class="@DragClass">
-                               <MudText Typo="Typo.h6">Drag and drop files here or click</MudText>
+                           <MudPaper Style="height: 100%;width: 100%;margin-top: 0.5rem !important;" Outlined="true" Class="@DragClass">
+                               <MudText Typo="Typo.h6">Drag and drop file here</MudText>
                            </MudPaper>
+                           <MudText>@(IsPhotoUploaded ? "Photo was uploaded" : "Photo hasn't been uploaded") </MudText>
+                           <MudButton 
+                               HtmlTag="label"
+                               Disabled="IsPhotoUploaded"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.CloudUpload"
+                               for="@context">Upload</MudButton>
+                            <MudButton OnClick="Clear" Disabled="!IsPhotoUploaded" Color="Color.Error" Variant="Variant.Filled">Clear</MudButton>
                        </ButtonTemplate>
                    </MudFileUpload>
-                   <MudText Style="margin-top:-10px">File Uploaded</MudText>
-                   <MudToolBar DisableGutters="true" Style="margin-top:-10px" Class="gap-4">
-                       <MudButton OnClick="Upload" Disabled="false" Color="Color.Primary" Variant="Variant.Filled">Upload</MudButton>
-                       <MudButton OnClick="Clear" Disabled="false" Color="Color.Error" Variant="Variant.Filled">Clear</MudButton>
-                   </MudToolBar>
                 </div>
-                <EditForm EditContext="_employeeContext">
+                <EditForm EditContext="_employeeContext" style="width:100%">
                 <DataAnnotationsValidator/>
                 <div style="width:100%">
-                    <MudTextField Label="Name" HelperText="Min. 3 characters"
+                    <MudStack Row="true" Justify="Justify.SpaceBetween" Style="width: 100%" AlignItems="AlignItems.Start">
+                    <MudTextField Label="Name" HelperText="Min. 3 characters" Style="margin-top:0.5em"
                             @bind-Value="Employee.Name" For="@(() => Employee.Name)"  Required="true" Variant="Variant.Outlined"/>
                     <MudTextField Label="Surname" HelperText="Min. 3 characters" Class="mt-3"
                             @bind-Value="Employee.Surname" For="@(() => Employee.Surname)" Required="true" Variant="Variant.Outlined"/>
-                    <MudTextField  Label="Age" HelperText="Employye's age must be between 18 and 70" Class="mt-3"
+                    </MudStack>
+                    <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.End" Style="width: 100%">
+                        <MudTextField  Label="Age" HelperText="Employye's age must be between 18 and 70" Class="mt-3"
                             @bind-Value="Employee.Age" For="@(() => Employee.Age)" Required="true" Variant="Variant.Outlined"/>
                     <MudTextField  Label="Role" HelperText="Min. 5 characters" Class="mt-3"
                             @bind-Value="Employee.Role" For="@(() => Employee.Role)" Required="true" Variant="Variant.Outlined"/>
+                    </MudStack>
+                    <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Style="width: 100%">
+                        <MudSelect Variant="Variant.Outlined" T="string" @bind-Value="@Employee.Teamid">  
+                            @foreach(var team in AvailableTeams)
+                            {
+                                <MudSelectItem Value="@team.Id">@team.Name</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudStack>
+
                 </div>
                 </EditForm>
             </MudStack>
@@ -39,16 +56,13 @@
                 <MudTextField @bind-Value="CurrentResponsibility" Style="width:100%" HelperText="Enter responsibility" Label="Responsibility" Variant="Variant.Outlined"/>
                 <MudButton Variant="Variant.Filled" Style="width:30%; height:50%;margin-top: 1em" OnClick="@AddResponsibility" Color="Color.Primary">Add</MudButton>
             </MudStack>
-            <div id="unique_id_scroll_section" class="ma-0" style="height:90px;overflow: auto;">
-                <MudPaper Width="100%" Height="80px" Elevation="2" Outlined="true">
-                    <MudGrid>
+            <div id="unique_id_scroll_section" class="ma-0" style="height: 90px;max-height: 90px;overflow-y: auto;overflow-x: hidden;border: 1px solid var(--mud-palette-lines-default);border-radius: var(--mud-default-borderradius);">
+                <MudPaper Width="100%" Height="90px" Elevation="0" Outlined="false">
                         @foreach(var responsibility in @Employee.Responsibilities)
                         {
-                            <MudItem xs="3">
-                                <MudChip Color="Color.Secondary" OnClose="CloseChip">@responsibility</MudChip>
-                            </MudItem>
+                            <MudChip Color="Color.Secondary" OnClose="CloseChip" Text="@responsibility">@responsibility</MudChip>
                         }
-                    </MudGrid>
+                    
                      <MudScrollToTop TopOffset="100"
                         Selector="#unique_id_scroll_section"
                         VisibleCssClass="visible absolute"

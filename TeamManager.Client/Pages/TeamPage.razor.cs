@@ -47,14 +47,15 @@ namespace TeamManager.Client.Pages
                 Position = DialogPosition.Center,
                 DisableBackdropClick = true
             };
-
-            var parameters = new DialogParameters<AddUpdateEmployeeDialog> {{ x => x.IsNew, true}};
+            var teams = await TeamService.GetTeamNames();
+            var parameters = new DialogParameters<AddUpdateEmployeeDialog> {{ x => x.IsNew, true}, { x => x.TeamId, Id}, { x => x.AvailableTeams, teams } };
            
-            var dialog = Dialog.Show<AddUpdateEmployeeDialog>("Create Team", parameters, options);
+            var dialog = Dialog.Show<AddUpdateEmployeeDialog>("Add Employee", parameters, options);
             var result = await dialog.Result;
             if (result.Canceled) return;
 
             var employee = result.Data as EmployeeModel;
+            employee.ActiveFrom = DateTime.UtcNow;
             await EmployeeService.AddEmployee(employee!);
             await LoadTeamDetails();
             await InvokeAsync(StateHasChanged);

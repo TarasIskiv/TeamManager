@@ -14,7 +14,7 @@ namespace TeamManager.Core.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = default!;
+        public string Id { get; set; } = string.Empty;
         [Required]
         [MinLength(3)]
         [BsonElement("n")]
@@ -31,7 +31,7 @@ namespace TeamManager.Core.Models
         public string Surname { get; set; } = string.Empty;
         [BsonElement("tid")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Teamid { get; set; } = default!;
+        public string Teamid { get; set; } = string.Empty;
         [BsonElement("af")]
         public DateTime ActiveFrom { get; set; }
         [BsonElement("at")]
