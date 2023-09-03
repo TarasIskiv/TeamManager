@@ -1,19 +1,25 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using System.Diagnostics.CodeAnalysis;
 using TeamManager.Core.Models;
 
 namespace TeamManager.Client.Shared.Dialogs
 {
-    partial class CreateTeamDialog
+    partial class AddUpdateTeamDialog
     {
         [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-        public TeamModel NewTeam = new TeamModel();
+        [AllowNull][Parameter] public TeamModel Team { get; set; }
+        [Parameter] public bool IsNew { get; set; } = false;
         private EditContext _context;
 
         protected override void OnInitialized()
         {
-            _context = new EditContext(NewTeam);
+            if(IsNew)
+            {
+                Team = new TeamModel();
+            }
+            _context = new EditContext(Team);
         }
         public async Task Close()
         {
@@ -23,7 +29,7 @@ namespace TeamManager.Client.Shared.Dialogs
         public async Task Save()
         {
             if (!_context.Validate()) return;
-            MudDialog.Close(DialogResult.Ok(NewTeam));
+            MudDialog.Close(DialogResult.Ok(Team));
         }
     }
 }

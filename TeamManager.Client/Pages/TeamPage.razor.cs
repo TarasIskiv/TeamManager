@@ -68,7 +68,23 @@ namespace TeamManager.Client.Pages
 
         public async Task UpdateTeam()
         {
+            var options = new DialogOptions
+            {
+                CloseOnEscapeKey = true,
+                Position = DialogPosition.Center,
+                DisableBackdropClick = true
+            };
 
+            var parameters = new DialogParameters<AddUpdateTeamDialog> { { x => x.IsNew, false }, { x => x.Team, Team} };
+
+            var dialog = Dialog.Show<AddUpdateTeamDialog>("Update Team", parameters, options);
+            var result = await dialog.Result;
+            if (result.Canceled) return;
+
+            var newTeam = result.Data as TeamModel;
+            await TeamService.UpdateTeam(newTeam!);
+            await LoadTeamDetails();
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

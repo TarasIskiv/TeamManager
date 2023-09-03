@@ -1,15 +1,15 @@
 ﻿@using MudBlazor
 <MudDialog Style="width:500px">
     <TitleContent>
-        <MudText Typo=Typo.h4>Create Team</MudText>
+        <MudText Typo=Typo.h4>@(IsNew ? "Create Team" : "Update Team")</MudText>
     </TitleContent>
     <DialogContent>
         <EditForm EditContext="_context">
             <DataAnnotationsValidator/>
             <MudTextField Label="Team name" HelperText="Min. 5 characters"
-                            @bind-Value="NewTeam.Name" For="@(() => NewTeam.Name)" Variant="Variant.Outlined"/>
-            <MudTextField Label="Team Description" HelperText="Add team's description. (Optional)" Class="mt-3"
-                            @bind-Value="NewTeam.Description" Required="false" Lines="3" Variant="Variant.Outlined"/>
+                            @bind-Value="Team.Name" For="@(() => Team.Name)" Variant="Variant.Outlined"/>
+            <MudTextField Label="Team Description" HelperText="Team's description. (Optional)" Class="mt-3"
+                            @bind-Value="Team.Description" Required="false" Lines="3" Variant="Variant.Outlined"/>
         </EditForm>
     </DialogContent>
     <DialogActions>

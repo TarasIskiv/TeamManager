@@ -41,7 +41,10 @@ namespace TeamManager.Client.Shared
                 Position = DialogPosition.Center,
                 DisableBackdropClick=true
             };
-            var dialog = Dialog.Show<CreateTeamDialog>("Create Team", options);
+
+            var parameters = new DialogParameters<AddUpdateTeamDialog> { { x => x.IsNew, true }};
+
+            var dialog = Dialog.Show<AddUpdateTeamDialog>("Create Team", parameters, options);
             var result = await dialog.Result;
             if (result.Canceled) return;
 

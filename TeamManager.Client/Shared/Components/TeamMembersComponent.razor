@@ -1,5 +1,39 @@
-﻿<h3>TeamMembersComponent</h3>
+﻿ <div id="unique_id_scroll_section" class="ma-0 scrollable">
+    <MudPaper Width="100%" Height="100%" Style="padding:1em 1em" Elevation="0" Outlined="false">
+        <MudGrid>
 
-@code {
+        @foreach(var member in Members)
+        {
+            <MudItem xs="3">
 
-}
+           <MudCard Style="width:90%;">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.body1" Color="Color.Primary">@member.Name @member.Surname</MudText>
+                        <MudText Typo="Typo.body2" Color="Color.Secondary">@member.Role</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Warning" />
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardMedia Image="@member.Photo" Height="200"/>
+                <MudCardContent>
+                    <MudText Typo="Typo.body1">Responsibilities:</MudText>
+                    <MudText Typo="Typo.body2">@(String.Join(", ", member.Responsibilities.Take(5).ToList()))</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudStack Row="true" Justify="Justify.SpaceBetween">
+                         <MudButton Variant="Variant.Outlined" Color="Color.Primary">View</MudButton>
+                         <MudButton Variant="Variant.Outlined" Color="Color.Error">Remove</MudButton>
+                    </MudStack>
+                </MudCardActions>
+        </MudCard>
+        </MudItem>
+        }
+       </MudGrid>
+          <MudScrollToTop TopOffset="100"
+                        Selector="#unique_id_scroll_section"
+                        VisibleCssClass="visible absolute"
+                        HiddenCssClass="invisible"/>
+    </MudPaper>
+</div>

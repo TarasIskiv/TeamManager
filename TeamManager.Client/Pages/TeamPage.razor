@@ -32,4 +32,7 @@
     </div>
 </MudStack>
 <hr />
-<TeamMembersComponent></TeamMembersComponent>
+@if(UsersExpanded)
+{
+ <TeamMembersComponent Members="@Employees"></TeamMembersComponent>   
+}
