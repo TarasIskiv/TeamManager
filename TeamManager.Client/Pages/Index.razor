@@ -2,8 +2,27 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<MudStack AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h1" Color="Color.Primary">
+         Welcome to Team Manager
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h3" Color="Color.Primary">
+        Description:
+    </MudText>
+    <MudText Typo="Typo.body1" Style="width:80%">
+        This application is a simple version of Team Manager. You could manage your teams and employees. Functional includes: Add, Remove, Modify Teams and Employees. 
+        Meanwhile, you don't need any additional data. Because there is the seeder, that will automatically complete data.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h3" Color="Color.Primary">
+         Technolies:
+    </MudText>
+    <MudText><MudText Icon="@Icons.Material.Filled.PlayArrow" Color="Color.Primary"/>Blazor Wasm</MudText>
+    <MudText><MudText Icon="@Icons.Material.Filled.PlayArrow" Color="Color.Primary"/>.Net Web API</MudText>
+    <MudText><MudText Icon="@Icons.Material.Filled.PlayArrow" Color="Color.Primary"/>Mongo DB</MudText>
+    <br/>
+    <MudText Typo="Typo.h2" Color="Color.Primary">
+         Designed and done by: Taras Iskiv
+    </MudText>
+</MudStack>
