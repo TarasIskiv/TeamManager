@@ -12,6 +12,7 @@ namespace TeamManager.Client.Pages
         [Inject] public ITeamService TeamService { get; set; }
         [Inject] public IEmployeeService EmployeeService { get; set; }
         [Inject] IDialogService Dialog { get; set; }
+        [Inject] NavigationManager NavManager { get; set; }
         public TeamModel Team { get; set; } = new();
         public List<EmployeeModel> Employees { get; set; } = new();
         public int TeamMembersCount { get; set; } = 0;
@@ -63,7 +64,22 @@ namespace TeamManager.Client.Pages
 
         public async Task DeleteTeam()
         {
+            var options = new DialogOptions
+            {
+                CloseOnEscapeKey = true,
+                Position = DialogPosition.Center,
+                DisableBackdropClick = true,
+                NoHeader = true
+            };
 
+            var parameters = new DialogParameters<SubmitRemoveDialog> { { x => x.IsEmployee, false }, { x => x.ObjectName, Team.Name } };
+
+            var dialog = Dialog.Show<SubmitRemoveDialog>("Remove Team", parameters, options);
+            var result = await dialog.Result;
+            if (result.Canceled) return;
+
+            await TeamService.RemoveTeam(Id);
+            NavManager.NavigateTo("/");
         }
 
         public async Task UpdateTeam()

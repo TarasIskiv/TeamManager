@@ -1,0 +1,16 @@
+﻿<MudDialog Style="width:325px">
+    <DialogContent>
+        <MudText>@GetMessage()</MudText>
+        @if(IsEmployee)
+        {
+            <MudCheckBox @bind-Checked="@KeepInHistory" Label="Keep in history?" Color="Color.Primary"></MudCheckBox>
+            <MudText Typo="Typo.body2">If this checkbox is checked. The employee still will be visible in Employees' list. But will be marked as removed</MudText>
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudStack Row="true" Style="width: 100%;padding: 0em 1em;" Justify="Justify.SpaceBetween">
+            <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="Close">Cancel</MudButton>
+            <MudButton Color="Color.Warning" Variant="Variant.Filled" OnClick="Remove">Remove</MudButton>
+        </MudStack>
+    </DialogActions>
+</MudDialog>

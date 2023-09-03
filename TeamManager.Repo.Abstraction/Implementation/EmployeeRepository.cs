@@ -39,7 +39,7 @@ namespace TeamManager.Repository.Implementation
 
         public async Task<List<EmployeeModel>> GetEmployees(string temaId)
         {
-            return (await _context.Employees.Find(new BsonDocument()).ToListAsync()) ?? new List<EmployeeModel>();
+            return (await _context.Employees.Find(employer => employer.Teamid.Equals(temaId)).ToListAsync()) ?? new List<EmployeeModel>();
         }
 
         public async Task RemoveEmployee(string id)

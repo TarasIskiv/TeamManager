@@ -24,7 +24,7 @@
                 <MudCardActions>
                     <MudStack Row="true" Justify="Justify.SpaceBetween">
                          <MudButton Variant="Variant.Outlined" Color="Color.Primary">View</MudButton>
-                         <MudButton Variant="Variant.Outlined" Color="Color.Error">Remove</MudButton>
+                         <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeleteEmployee(member))">Remove</MudButton>
                     </MudStack>
                 </MudCardActions>
         </MudCard>
