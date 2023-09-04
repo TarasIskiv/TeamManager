@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.21" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
@@ -15,6 +16,7 @@
     <ProjectReference Include="..\TeamManager.Core\TeamManager.Core.csproj" />
     <ProjectReference Include="..\TeamManager.Database\TeamManager.Database.csproj" />
     <ProjectReference Include="..\TeamManager.Repo.Abstraction\TeamManager.Repository.csproj" />
+    <ProjectReference Include="..\TeamManager.Client\TeamManager.Client.csproj" />
   </ItemGroup>
 
 </Project>
