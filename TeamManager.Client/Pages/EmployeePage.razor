@@ -1,3 +1,9 @@
 ﻿@page "/employee/{Id}"
 
-<h3>EmployeePage</h3>
+<MudPaper Height="10%" Width="100%" Style="padding: 1em">
+    <MudStack Row="true" Justify="Justify.FlexStart">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@MoveBack">Back</MudButton>
+    </MudStack>
+</MudPaper>
+<br/>
+<EmployeeDetailsComponent Team="Team" Employee="Employee" EmployeeForRemove="@RemoveEmployee" EmployeeForUpdate="@UpdateEmployee"></EmployeeDetailsComponent>

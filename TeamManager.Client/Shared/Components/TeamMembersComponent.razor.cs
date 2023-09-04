@@ -11,6 +11,9 @@ namespace TeamManager.Client.Shared.Components
         [Parameter] public List<EmployeeModel> Members { get; set; } = new();
         [Inject] IDialogService Dialog { get; set; }
         [Inject] IEmployeeService EmployeeService { get; set; }
+        [Inject] NavigationManager NavManager { get; set; }
+        [Parameter] public EventCallback Refresh {get; set;}
+        [Parameter] public EventCallback<EmployeeModel> EmployeeForUpdate { get; set;}
         public async Task DeleteEmployee(EmployeeModel selectedEmployee)
         {
             var options = new DialogOptions
@@ -30,7 +33,21 @@ namespace TeamManager.Client.Shared.Components
             bool keepInHistory;
             Boolean.TryParse(result.Data.ToString(), out keepInHistory);
             await EmployeeService.RemoveEmployee(selectedEmployee.Id, keepInHistory);
-            await InvokeAsync(StateHasChanged);
+            await Refresh.InvokeAsync();
+        }
+
+        public async Task EditEmployee(EmployeeModel selectedEmployee)
+        {
+            await EmployeeForUpdate.InvokeAsync(selectedEmployee);
+        }
+        public bool IsEmployeeDeleted(EmployeeModel employee)
+        {
+            return employee.ActiveTo is not null;
+        }
+
+        public void MemberDetails(string Id)
+        {
+            NavManager.NavigateTo($"/employee/{Id}");
         }
     }
 }

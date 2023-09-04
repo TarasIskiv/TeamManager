@@ -10,20 +10,35 @@
                 <MudCardHeader>
                     <CardHeaderContent>
                         <MudText Typo="Typo.body1" Color="Color.Primary">@member.Name @member.Surname</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Secondary">@member.Role</MudText>
+                        @if(IsEmployeeDeleted(@member))
+                        {
+                            <MudText Typo="Typo.body2" Color="Color.Error">Removed</MudText>
+                        }
+                        else
+                        {
+                            <MudText Typo="Typo.body2" Color="Color.Secondary">@member.Role</MudText>
+                        }
                     </CardHeaderContent>
                     <CardHeaderActions>
-                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Warning" />
+                        <MudIconButton Disabled="@IsEmployeeDeleted(@member)" Icon="@Icons.Material.Filled.Edit" Color="Color.Warning" OnClick="@(() => EditEmployee(@member))"/>
                     </CardHeaderActions>
                 </MudCardHeader>
                 <MudCardMedia Image="@member.Photo" Height="200"/>
                 <MudCardContent>
-                    <MudText Typo="Typo.body1">Responsibilities:</MudText>
-                    <MudText Typo="Typo.body2">@(String.Join(", ", member.Responsibilities.Take(5).ToList()))</MudText>
+                    @if(IsEmployeeDeleted(@member))
+                    {
+                        <MudText Typo="Typo.body2" Color="Color.Primary">Period</MudText>
+                        <MudText Typo="Typo.body2" Color="Color.Primary">@(member.ActiveFrom.ToString("dd'/'MM'/'yyyy") + " - " + member.ActiveTo!.Value.ToString("dd'/'MM'/'yyyy"))</MudText>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.body1">Responsibilities:</MudText>
+                        <MudText Typo="Typo.body2">@(String.Join(", ", member.Responsibilities.Take(5).ToList()))</MudText>                    
+                    }
                 </MudCardContent>
                 <MudCardActions>
                     <MudStack Row="true" Justify="Justify.SpaceBetween">
-                         <MudButton Variant="Variant.Outlined" Color="Color.Primary">View</MudButton>
+                         <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => MemberDetails(member.Id))">View</MudButton>
                          <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeleteEmployee(member))">Remove</MudButton>
                     </MudStack>
                 </MudCardActions>

@@ -102,5 +102,32 @@ namespace TeamManager.Client.Pages
             await LoadTeamDetails();
             await InvokeAsync(StateHasChanged);
         }
+
+        public async Task RefreshPage()
+        {
+            await LoadTeamDetails();
+            StateHasChanged();
+        }
+
+        public async Task UpdateEployee(EmployeeModel employeeForUpdate)
+        {
+            var options = new DialogOptions
+            {
+                CloseOnEscapeKey = true,
+                Position = DialogPosition.Center,
+                DisableBackdropClick = true
+            };
+            var teams = await TeamService.GetTeamNames();
+            var parameters = new DialogParameters<AddUpdateEmployeeDialog> {{ x => x.IsNew, false}, {x => x.Employee, employeeForUpdate}, { x => x.TeamId, Id}, { x => x.AvailableTeams, teams } };
+           
+            var dialog = Dialog.Show<AddUpdateEmployeeDialog>("Add Employee", parameters, options);
+            var result = await dialog.Result;
+            if (result.Canceled) return;
+
+            var employee = result.Data as EmployeeModel;
+            await EmployeeService.UpdateEmployee(employee!);
+            await LoadTeamDetails();
+            await InvokeAsync(StateHasChanged);
+        }
     }
 }

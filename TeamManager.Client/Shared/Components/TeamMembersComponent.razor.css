@@ -1,7 +1,7 @@
 ﻿.scrollable 
 {
     min-height: 200px;
-    height: 500px;
+    height: 490px;
     overflow-x: hidden;
     overflow-y: auto;
     border: 1px solid var(--mud-palette-lines-default);
