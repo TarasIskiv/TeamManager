@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "64f0cf6ac70f059c2a406b59"
+  },
+  "n": "Marketing",
+  "d": "A marketing team develops and implements strategies to promote brand awareness and drive sales of an organization's products or services"
+},
+{
+  "_id": {
+    "$oid": "64f0cff6c70f059c2a406b5a"
+  },
+  "n": "Development",
+  "d": "A development team is a group of people who work together to develop a piece of software, product, or service from initial ideation to completion"
+},
+{
+  "_id": {
+    "$oid": "64f0d05fc70f059c2a406b5b"
+  },
+  "n": "Data Analytics",
+  "d": "A data analytics team performs specialized tasks to make your business data usable for digital products, business units, departments, and decision makers"
+},
+{
+  "_id": {
+    "$oid": "64f378ca7546dc1df905ccdf"
+  },
+  "n": "Finance",
+  "d": "A finance team is a department within your organization that handles all functions related to your company's financial well-being"
+}]

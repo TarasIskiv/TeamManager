@@ -6,7 +6,7 @@
         {
             <MudItem xs="3">
 
-           <MudCard Style="width:90%;">
+           <MudCard Style="width:90%; height:100%">
                 <MudCardHeader>
                     <CardHeaderContent>
                         <MudText Typo="Typo.body1" Color="Color.Primary">@member.Name @member.Surname</MudText>
@@ -25,23 +25,16 @@
                 </MudCardHeader>
                 <MudCardMedia Image="@member.Photo" Height="200"/>
                 <MudCardContent>
-                    @if(IsEmployeeDeleted(@member))
-                    {
-                        <MudText Typo="Typo.body2" Color="Color.Primary">Period</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Primary">@(member.ActiveFrom.ToString("dd'/'MM'/'yyyy") + " - " + member.ActiveTo!.Value.ToString("dd'/'MM'/'yyyy"))</MudText>
-                    }
-                    else
-                    {
-                        <MudText Typo="Typo.body1">Responsibilities:</MudText>
-                        <MudText Typo="Typo.body2">@(String.Join(", ", member.Responsibilities.Take(5).ToList()))</MudText>                    
-                    }
+                    <MudText Typo="Typo.body2" Color="Color.Primary">Activity Period</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Primary">@(member.ActiveFrom.ToString("dd'/'MM'/'yyyy") + " - " + (IsEmployeeDeleted(@member) ? member.ActiveTo!.Value.ToString("dd'/'MM'/'yyyy") : "Now"))</MudText>
+                    
                 </MudCardContent>
-                <MudCardActions>
-                    <MudStack Row="true" Justify="Justify.SpaceBetween">
+                <br/>
+                 <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.End" Style="padding:1em 1em">
                          <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => MemberDetails(member.Id))">View</MudButton>
                          <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeleteEmployee(member))">Remove</MudButton>
-                    </MudStack>
-                </MudCardActions>
+                </MudStack>
+               
         </MudCard>
         </MudItem>
         }
