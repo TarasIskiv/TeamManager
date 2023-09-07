@@ -25,10 +25,10 @@ In default data, you can see the faces of employees and their names, but the pro
 
 # Technologies
 
-<img src="https://cdn.worldvectorlogo.com/logos/blazor.svg" alt="blazor" width="40" height="40"/> </a> <a href="https://learn.microsoft.com/pl-pl/aspnet/core/blazor/?view=aspnetcore-7.0" target="_blank" rel="noreferrer">
-<img src="https://mudblazor.com/_content/MudBlazor.Docs/images/logo.png" alt="mudblazor" width="40" height="40"/> </a> <a href="https://mudblazor.com/" target="_blank" rel="noreferrer">
+<img src="https://cdn.worldvectorlogo.com/logos/blazor.svg" alt="blazor" width="60" height="60"/> </a> <a href="https://learn.microsoft.com/pl-pl/aspnet/core/blazor/?view=aspnetcore-7.0" target="_blank" rel="noreferrer">
+<img src="https://mudblazor.com/_content/MudBlazor.Docs/images/logo.png" alt="mudblazor" width="60" height="60"/> </a> <a href="https://mudblazor.com/" target="_blank" rel="noreferrer">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://learn.microsoft.com/pl-pl/dotnet/" target="_blank" rel="noreferrer">
-<img src="https://www.cdnlogo.com/logos/m/30/mongodb-icon.svg" alt="mongo" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
+<img src="https://www.cdnlogo.com/logos/m/30/mongodb-icon.svg" alt="mongo" width="60" height="60"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
 
 # Found me!
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" alt="linkedin" width="40" height="40"/> </a> <a href="https://www.linkedin.com/in/taras-iskiv-16b8b7266/" target="_blank" rel="noreferrer">
+<a href="https://www.linkedin.com/in/taras-iskiv-16b8b7266/" target="_blank" rel="noreferrer">LinkedIn</a>
